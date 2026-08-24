@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 struct History {
     int position;
     char player;
     struct History* next;
 };
-
 struct Stack {
     int position;
     char player;
@@ -65,16 +63,16 @@ int pop(struct Stack** top, int* position, char* player) {
     if (*top == NULL) return 0;
     struct Stack* temp = *top;
     *position = temp->position;
-    *player = temp->player;
+*player = temp->player;
     *top = temp->next;
     free(temp);
     return 1;
 }
 void addHistory(struct History** head, struct History** tail, int position, char player) {
     struct History* newNode = (struct History*)malloc(sizeof(struct History));
-    newNode->position = position;
+  newNode->position = position;
     newNode->player = player;
-    newNode->next = NULL;
+ newNode->next = NULL;
     if (*head == NULL) {
         *head = newNode;
         *tail = newNode;
@@ -94,7 +92,7 @@ void removeHistory(struct History** head, struct History** tail) {
     struct History* temp = *head;
 while (temp->next->next != NULL)
         temp = temp->next;
-    free(temp->next);
+ free(temp->next);
     temp->next = NULL;
     *tail = temp;
 }
@@ -165,7 +163,7 @@ while (1) {
             printf("H   : History\n");
             printf("T   : Tutorial\n");
             printf("E   : Exit\n");
-            char* activeName = (currentPlayer == 'X') ? player1 : player2;
+    char* activeName = (currentPlayer == 'X') ? player1 : player2;
             printf("\nCurrent Turn: %s (%c)", activeName, currentPlayer);
             printf("\nEnter choice: ");
             scanf(" %c", &input);
@@ -244,7 +242,7 @@ while (1) {
             printf("E. Exit\n");
             printf("\nEnter choice: ");
             scanf(" %c", &input);
-    if (input == 'N' || input == 'n') break;
+if (input == 'N' || input == 'n') break;
     if (input == 'H' || input == 'h') {
                 system("cls");
                 displayBoard(board, tutorial);
@@ -254,7 +252,7 @@ while (1) {
                 getchar();
                 continue;
             }
-    if (input == 'E' || input == 'e') return 0;
+  if (input == 'E' || input == 'e') return 0;
 
             printf("\nInvalid choice.");
             printf("\nUse N, H or E.");
